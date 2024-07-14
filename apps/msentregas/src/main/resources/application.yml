@@ -1,0 +1,23 @@
+server:
+  port: 8084
+
+spring:
+  application:
+    name: msentregas
+  datasource:
+    url: jdbc:postgresql://localhost:5435/deliveries_db
+    username: user4
+    password: password4
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+  cloud:
+    function:
+      web:
+        path: /api
