@@ -1,0 +1,23 @@
+server:
+  port: 8083
+
+spring:
+  application:
+    name: mspedidos
+  datasource:
+    url: jdbc:postgresql://localhost:5434/requests_db
+    username: user3
+    password: password3
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+  cloud:
+    function:
+      web:
+        path: /api
