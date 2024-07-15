@@ -9,6 +9,7 @@ spring:
     username: user3
     password: password3
 
+
   jpa:
     hibernate:
       ddl-auto: update
@@ -17,7 +18,17 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQLDialect
     database-platform: org.hibernate.dialect.PostgreSQLDialect
 
+  rabbitmq:
+    username: guest
+    password: guest
+    host: localhost
+    port: 5672
+
   cloud:
+    stream:
+      bindings:
+        create-produto-to-cliente-out-0:
+          destination: app.v1.event.produto-to-cliente
     function:
       web:
         path: /api

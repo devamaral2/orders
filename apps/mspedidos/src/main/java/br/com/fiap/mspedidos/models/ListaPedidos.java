@@ -17,11 +17,17 @@ public class ListaPedidos {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
-    @Column(name = "client_id")
+    @Column(name = "cliente_id")
     private UUID clienteId;
     @Column(name = "entrega_id")
     private UUID entregaId;
     private Long valor;
+    @Column(name = "cliente_accepted")
+    private Boolean clienteAccepted;
+    @Column(name = "produto_accepted")
+    private Boolean produtosAccepted;
+    @Column(name = "entrega_accepted")
+    private Boolean entregaAccepted;
 
     @OneToMany(mappedBy = "listaPedidos")
     public List<Pedido> pedidos;

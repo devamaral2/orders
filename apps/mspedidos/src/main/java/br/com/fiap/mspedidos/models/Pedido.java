@@ -16,7 +16,8 @@ public class Pedido {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
-    private UUID productId;
+    @Column(name = "produto_id")
+    private UUID produtoId;
     private Long quantidade;
     private Long valor;
 
