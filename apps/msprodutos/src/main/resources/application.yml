@@ -18,6 +18,12 @@ spring:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
 
   cloud:
-    function:
-      web:
-        path: /api
+    stream:
+      function:
+        definition: pedidoToProdutoEventListener
+      bindings:
+        pedidoToProdutoEventListener-in-0:
+          destination: app.v1.event.produto-to-cliente
+          group: produto
+        produtoAcceptedSupplier-out-0:
+          destination: app.v1.event.produto-to-pedido

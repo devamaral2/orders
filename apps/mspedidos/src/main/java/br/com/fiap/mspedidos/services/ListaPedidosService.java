@@ -4,6 +4,7 @@ import br.com.fiap.mspedidos.events.PedidoEventGatway;
 import br.com.fiap.mspedidos.models.*;
 import br.com.fiap.mspedidos.repositories.ListaPedidosRepository;
 import br.com.fiap.mspedidos.repositories.PedidoRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +14,7 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
+@Slf4j
 public class ListaPedidosService {
     @Autowired
     private ListaPedidosRepository listaPedidosRepository;
@@ -33,11 +35,12 @@ public class ListaPedidosService {
         return  optionalCliente.get();
     }
 
-    public ListaPedidos create(UUID clienteId, List<ProdutoVendido> produtos) {
+    public ListaPedidos create(UUID clienteId, List<ProdutoVendido> produtos, String local) {
+        log.info("Veja só " + produtos.getFirst().getProdutoId());
         List<Pedido> pedidos = produtos.stream().map(p -> Pedido
                     .builder()
                     .quantidade(p.getQuantidade())
-                    .produtoId(p.getProductId())
+                    .produtoId(p.getProdutoId())
                     .build()
         ).collect(Collectors.toList());
         List<Pedido> pedidosCriados = pedidoRepository.saveAll(pedidos);
@@ -49,7 +52,10 @@ public class ListaPedidosService {
                 .pedidos(pedidosCriados)
                 .build();
         ListaPedidos lista = listaPedidosRepository.save(listaDePedidos);
-        pedidoEventGatway.sendProdutoToClienteEvent(new PedidoToCliente(clienteId));
+        PedidoCreated pedidoCreatedToClient = new PedidoCreated(lista.getId(), clienteId, null, null);
+        PedidoCreated pedidoCreatedToProduto = new PedidoCreated(lista.getId(), null, null, null);
+        pedidoEventGatway.sendProdutoToClienteEvent(pedidoCreatedToClient);
+        pedidoEventGatway.sendPedidoToProduto(pedidoCreatedToProduto);
         return lista;
 
     }

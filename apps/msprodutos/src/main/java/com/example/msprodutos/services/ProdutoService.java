@@ -75,9 +75,9 @@ public class ProdutoService {
 
     public void removeProduct(List<ProdutoVendido> produtoVendido) {
         produtoVendido.stream().forEach(p -> {
-        Optional<Produto> optionalProduct = produtoRepository.findById(p.getId());
+        Optional<Produto> optionalProduct = produtoRepository.findById(p.getProdutoId());
         if (optionalProduct.isEmpty()) {
-            throw new ControllerNotFoundException("Não existe este produto na nossa base de dados: " + p.getId());
+            throw new ControllerNotFoundException("Não existe este produto na nossa base de dados: " + p.getProdutoId());
         }
         if (optionalProduct.get().getQuantidade() < p.getQuantidade()) {
             throw new BadRequestException("O produto " + optionalProduct.get().getNome() + " não tem quantidade o suficiente no estoque");

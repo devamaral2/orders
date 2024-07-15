@@ -1,6 +1,7 @@
-package br.com.fiap.mspedidos.models;
+package com.example.msprodutos.models;
 
-import br.com.fiap.mspedidos.models.ProdutoVendido;
+import lombok.*;
+
 import lombok.*;
 
 import java.util.List;

@@ -9,7 +9,8 @@ import java.util.UUID;
 
 public record CreateListaPedidosDto(
         UUID clienteId,
-        @NotEmpty(message = "Você deve enviar uma lista que contenha produtos.")
-        List<ProdutoVendido> produtos
+        List<ProdutoVendido> produtos,
+        @NotBlank(message = "Você deve enviar um 'local' que contenha produtos.")
+        String local
 ) {
 }

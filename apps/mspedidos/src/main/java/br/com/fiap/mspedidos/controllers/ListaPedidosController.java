@@ -32,7 +32,7 @@ public class ListaPedidosController {
             BindingResult bindingResult) {
         new ValidationTrigger(bindingResult).verify();
         return ResponseEntity.status(HttpStatus.CREATED)
-                .body(this.listaPedidos.create(dto.clienteId(), dto.produtos()));
+                .body(this.listaPedidos.create(dto.clienteId(), dto.produtos(), dto.local()));
     }
 
     @GetMapping("/{id}")

@@ -10,6 +10,6 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProdutoVendido {
-    private UUID productId;
+    private UUID produtoId;
     private Long quantidade;
 }

@@ -4,5 +4,6 @@ import br.com.fiap.mspedidos.models.PedidoCreated;
 import br.com.fiap.mspedidos.models.PedidoToCliente;
 
 public interface PedidoEventGatway {
-    void sendProdutoToClienteEvent(PedidoToCliente pedidoToCLiente);
+    void sendProdutoToClienteEvent(PedidoCreated pedidoCreated);
+    void sendPedidoToProduto(PedidoCreated pedidoCreated);
 }
