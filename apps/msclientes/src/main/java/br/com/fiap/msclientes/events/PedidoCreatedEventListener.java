@@ -14,7 +14,7 @@ import java.util.function.Consumer;
 @Component
 @RequiredArgsConstructor
 @Slf4j
-public class ProdutoCreatedEventListener implements Consumer<PedidoCreated> {
+public class PedidoCreatedEventListener implements Consumer<PedidoCreated> {
 
     private final ClienteRepository clienteRepository;
     private final ClienteAcceptedEventGatway clienteAcceptedEventGatway;

@@ -26,16 +26,11 @@ spring:
 
   cloud:
     stream:
-      function:
-        definition: clienteAcceptedEventListener
+#      function:
+#        definition: clienteAcceptedEventListener
       bindings:
-        clienteAcceptedEventListener-in-0:
-          destination: app.v1.event.cliente-to-produto
-          group: produtoReceiveCliente
-        create-produto-to-cliente-out-0:
-          destination: app.v1.event.produto-to-cliente
-        create-pedido-to-produto-out-1:
-          destination: app.v1.event.pedido-to-produto
-    function:
-      web:
-        path: /api
+#        clienteAcceptedEventListener-in-0:
+#          destination: app.v1.event.cliente-to-produto
+#          group: produtoReceiveCliente
+        create-pedido-to-cliente-out-0:
+          destination: app.v1.event.pedido-to-cliente
