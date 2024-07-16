@@ -59,7 +59,7 @@ Para a funcionalidade de localização, utilizamos a API do Google Maps, que for
   - Spring Cloud Stream
 
 
-# Integrantes 
+### Integrantes 
  * Andre S Ferreira
  * Eduardo Vilhena
  * Giulliana Munhoz
