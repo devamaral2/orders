@@ -6,5 +6,5 @@ import org.springframework.stereotype.Component;
 @Data
 @Component
 public class MessageProperties {
-    private String clienteAcceptedChannel = "clienteAcceptedSupplier-out-0";
+    private String clienteAcceptedChannel = "clienteToProdutoSupplier-out-0";
 }

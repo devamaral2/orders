@@ -29,7 +29,7 @@ public class EntregaService {
         return  optionalEntrega.get();
     }
 
-    public Entrega create(UUID pedidoId) {
+    public Entrega create(UUID pedidoId, String local) {
         List<Entregador> listaEntregador = entregadorRepository.findByOcupadoIsFalse();
         if (listaEntregador.isEmpty()) {
             throw new ControllerNotFoundException("Não temos um entregador disponível no momento");
@@ -39,7 +39,7 @@ public class EntregaService {
                 .entregador(listaEntregador.getFirst())
                 .pedidoId(pedidoId)
                 .status("preparado para entrega")
-                .local("Matriz")
+                .local(local)
                 .build();
         Entrega entregaFinal = entregaRepository.save(entrega);
         Entregador entregador = Entregador

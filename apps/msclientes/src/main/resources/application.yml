@@ -27,9 +27,9 @@ spring:
   cloud:
     stream:
       function:
-        definition: pedidoCreatedEventListener
+        definition: pedidoToClienteEventListener
       bindings:
-        pedidoCreatedEventListener-in-0:
+        pedidoToClienteEventListener-in-0:
           destination: app.v1.event.pedido-to-cliente
           group: cliente
         clienteToProdutoSupplier-out-0:

@@ -52,10 +52,9 @@ public class ListaPedidosService {
                 .pedidos(pedidosCriados)
                 .build();
         ListaPedidos lista = listaPedidosRepository.save(listaDePedidos);
-        PedidoCreated pedidoCreatedToClient = new PedidoCreated(lista.getId(), clienteId, null, null);
-        PedidoCreated pedidoCreatedToProduto = new PedidoCreated(lista.getId(), null, null, null);
-        pedidoEventGatway.sendProdutoToClienteEvent(pedidoCreatedToClient);
-        pedidoEventGatway.sendPedidoToProduto(pedidoCreatedToProduto);
+        log.info("produto" + produtos.getFirst().getProdutoId());
+        PedidoCreated pedidoCreated = new PedidoCreated(lista.getId(), clienteId, local, produtos);
+        pedidoEventGatway.sendProdutoToClienteEvent(pedidoCreated);
         return lista;
 
     }

@@ -1,4 +1,4 @@
-package br.com.fiap.mspedidos.models;
+package com.fiap.msprodutos.models;
 import lombok.*;
 
 import java.util.List;

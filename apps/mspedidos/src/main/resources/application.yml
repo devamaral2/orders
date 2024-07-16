@@ -26,11 +26,11 @@ spring:
 
   cloud:
     stream:
-#      function:
-#        definition: clienteAcceptedEventListener
+      function:
+        definition: EntregaToPedidoEventListener
       bindings:
-#        clienteAcceptedEventListener-in-0:
-#          destination: app.v1.event.cliente-to-produto
-#          group: produtoReceiveCliente
+        entregaToPedidoEventListener-in-0:
+          destination: app.v1.event.entrega-to-pedido
+          group: pedido
         create-pedido-to-cliente-out-0:
           destination: app.v1.event.pedido-to-cliente

@@ -22,12 +22,7 @@ public class ListaPedidos {
     @Column(name = "entrega_id")
     private UUID entregaId;
     private Long valor;
-    @Column(name = "cliente_accepted")
-    private Boolean clienteAccepted;
-    @Column(name = "produto_accepted")
-    private Boolean produtosAccepted;
-    @Column(name = "entrega_accepted")
-    private Boolean entregaAccepted;
+    private String status;
 
     @OneToMany(mappedBy = "listaPedidos")
     public List<Pedido> pedidos;

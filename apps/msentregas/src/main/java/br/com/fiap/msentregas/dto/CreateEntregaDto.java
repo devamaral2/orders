@@ -6,6 +6,8 @@ import java.util.UUID;
 
 public record CreateEntregaDto(
         @NotBlank(message = "O campo 'pedidoId' deve ser preenchido.")
-        String pedidoId
+        String pedidoId,
+        @NotBlank(message = "O campo 'local' deve ser preenchido.")
+        String local
 ) {
 }

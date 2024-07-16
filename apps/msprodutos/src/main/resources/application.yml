@@ -20,10 +20,10 @@ spring:
   cloud:
     stream:
       function:
-        definition: pedidoToProdutoEventListener
+        definition: clienteToProdutoEventListener
       bindings:
-        pedidoToProdutoEventListener-in-0:
-          destination: app.v1.event.produto-to-cliente
+        clienteToProdutoEventListener-in-0:
+          destination: app.v1.event.cliente-to-produto
           group: produto
-        produtoAcceptedSupplier-out-0:
-          destination: app.v1.event.produto-to-pedido
+        produtoToEntregaSupplier-out-0:
+          destination: app.v1.event.produto-to-entrega

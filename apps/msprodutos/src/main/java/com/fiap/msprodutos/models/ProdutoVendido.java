@@ -1,4 +1,4 @@
-package br.com.fiap.msclientes.models;
+package com.fiap.msprodutos.models;
 
 import lombok.*;
 
