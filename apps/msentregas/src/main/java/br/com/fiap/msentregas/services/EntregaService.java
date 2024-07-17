@@ -67,14 +67,13 @@ public class EntregaService {
         if (listaEntregador.isEmpty()) {
             throw new ControllerNotFoundException("Não temos um entregador disponível no momento");
         }
-        String origem = System.getenv("STOCK_HOUSE_ADDRESS");
         Entrega entrega = Entrega
                 .builder()
                 .entregador(listaEntregador.getFirst())
                 .pedidoId(pedidoId)
                 .status("preparado para entrega")
                 .destino(destino)
-                .origem(origem)
+                .origem("São Paulo")
                 .build();
         Entrega entregaFinal = entregaRepository.save(entrega);
         Entregador entregador = Entregador
@@ -105,6 +104,7 @@ public class EntregaService {
                 .status(novoStatus)
                 .id(optionalEntrega.get().getId())
                 .destino(novoLocal)
+                .origem(optionalEntrega.get().getOrigem())
                 .pedidoId((optionalEntrega.get().getPedidoId()))
                 .entregador(optionalEntrega.get().getEntregador())
                 .build();

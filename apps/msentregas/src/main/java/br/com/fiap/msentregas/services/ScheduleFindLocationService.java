@@ -24,19 +24,13 @@ public class ScheduleFindLocationService {
     private final FakeSendGoogleInformation sendGoogleInformation;
     @Scheduled(cron = "0 */1 * * * *")
     public void doExecuteEachOneMinuteSchedule() {
-        ObjectMapper objectMapper = new ObjectMapper();
         List<Entrega> entregas = entregaRepository.findByStatus("em andamento");
         entregas.stream().forEach(e -> {
             String newLocation = inTransitLocation.getLocation(e.getId());
             entregaService.update(e.getId(), null, newLocation);
             ResponseEntity<String> response = entregaService.googleMapsRequisition(newLocation, e.getDestino());
-            GoogleMapsResponse googleMapsResponse = null;
-            try {
-                googleMapsResponse = objectMapper.readValue(response.getBody(), GoogleMapsResponse.class);
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
-            }
-            sendGoogleInformation.sendInformation(e.getEntregador().getId(), googleMapsResponse);
+
+            sendGoogleInformation.sendInformation(e.getEntregador().getId(), response);
         });
         log.info("Localização das entregas em andamento atualizado");
     }

@@ -17,13 +17,8 @@ import java.util.UUID;
 @Service
 @Slf4j
 public class FakeSendGoogleInformation {
-    public void sendInformation(UUID entregadorId, GoogleMapsResponse response) {
+    public void sendInformation(UUID entregadorId, ResponseEntity response) {
         log.info("A informação sobre a localização da entrega foi passada para o entregador" + entregadorId);
-        String distancia = response.getRoutes().getFirst().getLegs().getFirst().getDistance().getText();
-        String duracao = response.getRoutes().getFirst().getLegs().getFirst().getDuration().getText();
-        List<GoogleMapsResponse.Step> steps = response.getRoutes().getFirst().getLegs().getFirst().getSteps();
-        log.info("Distancia até o destino: " + distancia);
-        log.info("Duração até o destino " + duracao );
-        log.info("Distancia até o primeiro step: " + steps.getFirst().getDistance().getText());
+        log.info("Acessando as informações da requisição" + response.getBody());
     }
 }

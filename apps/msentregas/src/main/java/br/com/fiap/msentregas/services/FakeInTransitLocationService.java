@@ -14,7 +14,7 @@ import java.util.UUID;
 public class FakeInTransitLocationService {
     public String getLocation(UUID id) {
         log.info("Nova localização da entrega: " + id);
-        return  "localização atualizada";
+        return  "Belo Horizonte";
     }
 
 }
