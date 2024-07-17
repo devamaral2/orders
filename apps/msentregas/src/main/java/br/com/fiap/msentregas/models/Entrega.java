@@ -17,7 +17,8 @@ public class Entrega {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
     private UUID pedidoId;
-    private String local;
+    private String destino;
+    private String origem;
     private String status;
 
     @OneToOne
